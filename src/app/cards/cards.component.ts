@@ -8,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class CardsComponent implements OnInit {
 
   constructor() { }
-
+  status: boolean = false;
+  clickEvent(){
+      console.log('click', this.status)
+      this.status = !this.status;       
+  }
   ngOnInit() {
   }
 
