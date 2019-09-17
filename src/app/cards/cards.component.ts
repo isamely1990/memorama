@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cards.component.sass']
 })
 export class CardsComponent implements OnInit {
-
   constructor() { }
   status: boolean = false;
   clickEvent(){
