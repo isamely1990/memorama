@@ -14,12 +14,9 @@ export class CardsComponent implements OnInit {
   ];
   constructor() { }
   status: boolean = false;
-  clickEvent(e){
+  clickEvent(id){
       console.log('click', this.status)
-      const target = e.target
-      console.log(target)
-      const idAttr = target.attributes.id;
-      console.log(idAttr)
+      console.log(id)
       this.status = !this.status;    
       
   }
