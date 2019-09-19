@@ -10,7 +10,6 @@
           src="../../assets/imgs/{{ card }}.jpg"
           alt=""
           class="img-responsive"
-          
         />
       </div>
     </ng-container>
@@ -25,10 +24,24 @@
         <img
           src="../../assets/imgs/{{ card }}.jpg"
           alt=""
-          class="img-responsive"  
+          class="img-responsive"
         />
       </div>
     </ng-container>
   </div>
-  
+  <div class="row">
+    <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{timer}}</div>
+    <div
+      *ngIf="showMessage"
+      class="alert col-9 p-3 mb-2"
+      role="alert"
+      [ngClass]="{
+        'alert-danger': !compare,
+        'alert-success': compare
+      }"
+    >
+      <p *ngIf="compare">{{ successText }}</p>
+      <p *ngIf="!compare">{{ failText }}</p>
+    </div>
+  </div>
 </div>
