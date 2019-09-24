@@ -1,20 +1,32 @@
 <div class="container">
   <div class="row align-items-center">
+    <div class="col text-align-center">
+      <h2>Jugador 1</h2>
+      <span>Puntaje: {{puntajePlayer1}}</span>
+    </div>
+    <div class="col text-align-center">
+      <h2>Jugador 2</h2>
+      <span>Puntaje:{{puntajePlayer2}}</span>
+    </div>
+  </div>
+  <hr>
+  <div class="row align-items-center">
     <ng-container *ngFor="let card of cards">
       <div
-        id="{{ card }}"
-        class="col card bg-success shadow-sm p-3 m-2 rounded"
+        id="{{ card.id }}"
+        class="card bg-success shadow-sm p-3 m-2 rounded"
         (click)="clickEvent(card)"
       >
         <img
-          src="../../assets/imgs/{{ card }}.jpg"
+          src="../../assets/imgs/{{ card.img }}.jpg"
           alt=""
+          name="{{ card.nombre }}"
           class="img-responsive"
         />
       </div>
     </ng-container>
   </div>
-  <div class="row align-items-center">
+  <!--   <div class="row align-items-center">
     <ng-container *ngFor="let card of cardsCopy">
       <div
         id="{{ card }}"
@@ -28,9 +40,9 @@
         />
       </div>
     </ng-container>
-  </div>
+  </div> -->
   <div class="row">
-    <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{timer}}</div>
+    <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{ timer }}</div>
     <div
       *ngIf="showMessage"
       class="alert col-9 p-3 mb-2"
