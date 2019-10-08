@@ -10,107 +10,145 @@ export class CardsComponent implements OnInit {
     {
       nombre: 'fantasma',
       img: 1,
-      id: 1
+      id: 1,
+      show: true,
+      able: true
     },
     {
       nombre: 'luna',
       img: 2,
-      id: 2
+      id: 2,
+      show: true,
+      able: true
     },
     {
       nombre: 'lechuga',
       img: 3,
-      id: 3
+      id: 3,
+      show: true,
+      able: true
     },
     {
       nombre: 'halloween',
       img: 4,
-      id: 4
+      id: 4,
+      show: true,
+      able: true
     },
     {
       nombre: 'murcielago',
       img: 5,
-      id: 5
+      id: 5,
+      show: true,
+      able: true
     },
     {
       nombre: 'raton',
       img: 6,
-      id: 6
+      id: 6,
+      show: true,
+      able: true
     },
     {
       nombre: 'monstro',
       img: 7,
-      id: 7
+      id: 7,
+      show: true,
+      able: true
     },
     {
       nombre: 'vampiro',
       img: 8,
-      id: 8
+      id: 8,
+      show: true,
+      able: true
     },
     {
       nombre: 'frank',
       img: 9,
-      id: 9
+      id: 9,
+      show: true,
+      able: true
     },
     {
       nombre: 'calabaza',
       img: 10,
-      id: 10
+      id: 10,
+      show: true,
+      able: true
     },
     {
       nombre: 'fantasma',
       img: 1,
-      id: 11
+      id: 11,
+      show: true,
+      able: true
     },
     {
       nombre: 'luna',
       img: 2,
-      id: 12
+      id: 12,
+      show: true,
+      able: true
     },
     {
       nombre: 'lechuga',
       img: 3,
-      id: 13
+      id: 13,
+      show: true,
+      able: true
     },
     {
       nombre: 'halloween',
       img: 4,
-      id: 14
+      id: 14,
+      show: true,
+      able: true
     },
     {
       nombre: 'murcielago',
       img: 5,
-      id: 15
+      id: 15,
+      show: true,
+      able: true
     },
     {
       nombre: 'raton',
       img: 6,
-      id: 16
+      id: 16,
+      show: true,
+      able: true
     },
     {
       nombre: 'monstro',
       img: 7,
-      id: 17
+      id: 17,
+      show: true,
+      able: true
     },
     {
       nombre: 'vampiro',
       img: 8,
-      id: 18
+      id: 18,
+      show: true,
+      able: true
     },
     {
       nombre: 'frank',
       img: 9,
-      id: 19
+      id: 19,
+      show: true,
+      able: true
     },
     {
       nombre: 'calabaza',
       img: 10,
-      id: 20
+      id: 20,
+      show: true,
+      able: true
     }
   ];
-  /* cardsCopy = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-  ]; */
+
   showMessage = false;
   successText: string;
   failText: string;
@@ -129,8 +167,7 @@ export class CardsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.cards.sort(function () { return Math.random() - 0.5 });
-    // this.cardsCopy.sort(function () { return Math.random() - 0.5 });
+    this.cards.sort( function () { return Math.random() - 0.5; });
   }
 
   getTimer() {
@@ -152,6 +189,8 @@ export class CardsComponent implements OnInit {
   clickEvent(card) {
     this.getTimer();
     this.selectedCards.push(card.img);
+    const hfs = this.cards.find(x => x.id === card.id);
+    hfs.show = false;
     console.log(this.selectedCards);
     if (this.selectedCards.length === 2) {
       this.clearTimer();
@@ -178,6 +217,7 @@ export class CardsComponent implements OnInit {
         this.showMessage = true;
         this.failText = 'fallaste!, siguiente jugador';
         this.turnoChange = true;
+        hfs.show = true;
         setTimeout(() => {
           this.showMessage = false;
         }, 1500);

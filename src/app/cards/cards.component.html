@@ -17,7 +17,7 @@
         class="card bg-success shadow-sm p-3 m-2 rounded"
         (click)="clickEvent(card)"
       >
-        <img
+        <img *ngIf="card.show"
           src="../../assets/imgs/{{ card.img }}.jpg"
           alt=""
           name="{{ card.nombre }}"
@@ -26,21 +26,6 @@
       </div>
     </ng-container>
   </div>
-  <!--   <div class="row align-items-center">
-    <ng-container *ngFor="let card of cardsCopy">
-      <div
-        id="{{ card }}"
-        class="col card bg-success shadow-sm p-3 m-2 rounded"
-        (click)="clickEvent(card)"
-      >
-        <img
-          src="../../assets/imgs/{{ card }}.jpg"
-          alt=""
-          class="img-responsive"
-        />
-      </div>
-    </ng-container>
-  </div> -->
   <div class="row">
     <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{ timer }}</div>
     <div
