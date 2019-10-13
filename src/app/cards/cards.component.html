@@ -17,7 +17,7 @@
         class="card bg-success shadow-sm p-3 m-2 rounded"
         (click)="clickEvent(card)"
       >
-        <img
+        <img *ngIf="card.show"
           src="../../assets/imgs/{{ card.img }}.jpg"
           alt=""
           name="{{ card.nombre }}"
