@@ -27,7 +27,7 @@
     </ng-container>
   </div>
   <div class="row">
-    <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{ timer }}</div>
+    <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{ tiempo }}</div>
     <div
       *ngIf="showMessage"
       class="alert col-9 p-3 mb-2"
@@ -39,6 +39,12 @@
     >
       <p *ngIf="compare">{{ successText }}</p>
       <p *ngIf="!compare">{{ failText }}</p>
+      <p *ngIf="!timeOver">Time is over!, Siguiente jugador!</p>
+    </div>
+    <div *ngIf="timeOver"
+      class="alert col-9 p-3 mb-2 alert-danger"
+      role="alert">
+      <p>Time is over!, Siguiente jugador!</p>
     </div>
   </div>
 </div>

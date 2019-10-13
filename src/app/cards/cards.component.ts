@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { timer } from 'rxjs';
+import { takeWhile, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cards',
@@ -152,38 +154,42 @@ export class CardsComponent implements OnInit {
   showMessage = false;
   successText: string;
   failText: string;
-  timer = 20;
-  gameTimer;
+  tiempo = 10;
   status = false;
   selectedCards = [];
   player1 = [];
   player2 = [];
   puntajePlayer1: number;
   puntajePlayer2: number;
-
   compare: boolean;
   turnoChange: boolean;
+  contador$: any;
+  countdown: any;
+  timeOver = false;
+
 
   constructor() { }
 
   ngOnInit() {
-    this.cards.sort( function () { return Math.random() - 0.5; });
+    this.contador$ = timer(1000, 1000)
+    .pipe(
+      takeWhile( () => this.tiempo > 0 ),
+      tap(() => this.tiempo--)
+    );
+    this.cards.sort(function () { return Math.random() - 0.5 });
   }
 
   getTimer() {
-    this.gameTimer = setInterval(() => {
-      if (this.timer > 0) {
-        this.timer--;
-      } else {
-        this.timer = 20;
+    this.countdown = this.contador$.subscribe(() => {
+      if (this.tiempo === 0) {
+        this.timeOver = true;
       }
-    }, 1000);
+    });
   }
 
   clearTimer() {
-    if (this.gameTimer) {
-      clearInterval(this.gameTimer);
-    }
+    this.tiempo = 11;
+    this.countdown.unsubscribe();
   }
 
   clickEvent(card) {
