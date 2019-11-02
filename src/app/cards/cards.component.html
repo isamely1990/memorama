@@ -2,32 +2,16 @@
   <div class="row align-items-center">
     <div class="col text-align-center">
       <h2>Jugador 1</h2>
-      <span>Puntaje: {{puntajePlayer1}}</span>
+      <span>Puntaje: {{ puntajePlayer1 }}</span>
     </div>
     <div class="col text-align-center">
       <h2>Jugador 2</h2>
-      <span>Puntaje:{{puntajePlayer2}}</span>
+      <span>Puntaje:{{ puntajePlayer2 }}</span>
     </div>
   </div>
-  <hr>
-  <div class="row align-items-center">
-    <ng-container *ngFor="let card of cards">
-      <div
-        id="{{ card.id }}"
-        class="card bg-success shadow-sm p-3 m-2 rounded"
-        (click)="playGame(card)"
-      >
-        <img *ngIf="card.show"
-          src="../../assets/imgs/{{ card.img }}.jpg"
-          alt=""
-          name="{{ card.nombre }}"
-          class="img-responsive"
-        />
-      </div>
-    </ng-container>
-  </div>
+  <hr />
   <div class="row">
-    <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{ tiempo }}</div>
+    <!--     <div class="p-3 mb-2 bg-info text-white col-3">Tiempo: {{ tiempo }}</div>-->
     <div
       *ngIf="showMessage"
       class="alert col-9 p-3 mb-2"
@@ -40,10 +24,30 @@
       <p *ngIf="compare">{{ successText }}</p>
       <p *ngIf="!compare">{{ failText }}</p>
     </div>
-    <div *ngIf="timeOver"
+    <div
+      *ngIf="timeOver"
       class="alert col-9 p-3 mb-2 alert-danger"
-      role="alert">
+      role="alert"
+    >
       <p>Time is over!, Siguiente jugador!</p>
     </div>
+  </div>
+  <hr />
+  <div class="row align-items-center">
+    <ng-container *ngFor="let card of cards">
+      <div
+        id="{{ card.id }}"
+        class="card bg-success shadow-sm p-3 m-2 rounded"
+        (click)="playGame(card)"
+      >
+        <img
+          *ngIf="card.show"
+          src="../../assets/imgs/{{ card.img }}.jpg"
+          alt=""
+          name="{{ card.nombre }}"
+          class="img-responsive"
+        />
+      </div>
+    </ng-container>
   </div>
 </div>
