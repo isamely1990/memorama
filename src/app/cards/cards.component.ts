@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { timer, VirtualTimeScheduler } from 'rxjs';
+import { timer } from 'rxjs';
 import { takeWhile, tap } from 'rxjs/operators';
 
 @Component({
@@ -195,50 +195,6 @@ export class CardsComponent implements OnInit {
     this.countdown.unsubscribe();
   }
 
-  /* clickEvent(card) {
-    this.getTimer();
-    this.selectedCards.push(card);
-    const clickedCard = this.cards.find(x => x.id === card.id);
-    clickedCard.show = false;
-    console.log(this.selectedCards);
-    if (this.selectedCards.length === 2) {
-      console.log('entro en jugada completa')
-      this.clearTimer();
-      this.tiempo = 10;
-      if (this.selectedCards[0] === this.selectedCards[1]) {
-        console.log('entro en cartas iguales')
-        this.turnoChange = false;
-        if (!this.turnoChange) {
-          console.log('entro en continua jugando')
-          this.player1.push(card.nombre);
-          console.log(this.player1);
-          this.puntajePlayer1 = this.player1.length;
-          this.compare = true;
-          this.showMessage = true;
-          this.successText = 'Genial!, continúa jugando';
-        } else {
-          this.player2.push(card.nombre);
-          console.log(this.player2);
-          this.puntajePlayer2 = this.player2.length;
-        }
-        setTimeout(() => {
-          this.showMessage = false;
-        }, 1500);
-      } else {
-        this.clearTimer();
-        this.compare = false;
-        this.showMessage = true;
-        this.failText = 'fallaste!, siguiente jugador';
-        this.turnoChange = true;
-        clickedCard.show = true;
-        setTimeout(() => {
-          this.showMessage = false;
-        }, 1500);
-      }
-      this.selectedCards = [];
-    }
-  } */
-
   playGame(card) {
     this.selectedCards.push(card);
     if (this.selectedCards.length > 0) {
@@ -263,15 +219,14 @@ export class CardsComponent implements OnInit {
           clickedCard.able = false;
           setTimeout(() => {
             this.showMessage = false;
-            this.selectedCards = []
           }, 1500);
         } else {
           this.showMessage = true;
           this.compare = false;
-          this.selectedCards = [];
           this.turno1 = false;
           this.turno2 = true;
         }
+        this.selectedCards = [];
       }
     } else {
       console.log('turno segundo jugador')
@@ -287,15 +242,14 @@ export class CardsComponent implements OnInit {
           clickedCard.able = false;
           setTimeout(() => {
             this.showMessage = false;
-            this.selectedCards = []
           }, 1500);
         } else {
           this.showMessage = true;
           this.compare = false;
-          this.selectedCards = [];
           this.turno1 = true;
           this.turno2 = false;
         }
+        this.selectedCards = [];
       }
     }
 
